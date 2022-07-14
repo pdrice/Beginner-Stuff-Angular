@@ -1,0 +1,76 @@
+<h1>Directives</h1>
+<h2>NgFor Directive</h2>
+<h3>Simple Array NgFor</h3>
+<ul>
+    <li *ngFor="let user of users">
+        {{user}}
+    </li>
+</ul>
+
+<h3>Object Array NgFor</h3>
+<table>
+    <tr>
+        <th>
+            Index
+        </th>
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            City
+        </th>
+    </tr>
+    <tr *ngFor="let user of users2; let i = index">
+        <td>
+            {{i +1 }}
+        </td>
+        <td>
+            {{user.id}}
+        </td>
+        <td>
+            {{user.name}}
+        </td>
+        <td>
+            {{user.city}}
+        </td>
+    </tr>
+</table>
+
+<h2>NgIf Directives</h2>
+<div *ngIf="isUserLoggedIn; else logout">
+    Welcome to User Profile
+</div>
+<ng-template #logout>
+    <p>You are not logged in</p>
+</ng-template>
+
+<h2>NgSwitch Directives</h2>
+Select Country : <select (change)="choice($event)">
+    <option disabled selected>Select County</option>
+    <option *ngFor="let c of countries" [value]="c.code">
+        {{c.country}}
+    </option>
+</select>
+
+{{selectedCountry}}
+
+<div [ngSwitch]="selectedCountry">
+    <div *ngSwitchCase="'ind'" class="jumbotron">
+        <h1>Indian Calling </h1>
+    </div>
+    <div *ngSwitchCase="'uae'" class="jumbotron">
+        <h1>Arab Calling </h1>
+    </div>
+    <div *ngSwitchCase="'uk'" class="jumbotron">
+        <h1>Kingdom Calling </h1>
+    </div>
+    <div *ngSwitchCase="'usa'" class="jumbotron">
+        <h1>America Calling </h1>
+    </div>
+    <div *ngSwitchDefault="" class="jumbotron">
+        <h1>Select Your country</h1>
+    </div>
+</div>
